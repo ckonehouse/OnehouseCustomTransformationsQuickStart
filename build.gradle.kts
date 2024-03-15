@@ -9,14 +9,6 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url = uri("https://onehouse-194159489498.d.codeartifact.us-west-2.amazonaws.com/maven/onehouse-internal/")
-        credentials {
-            username = "aws"
-            password = System.getenv("CODEARTIFACT_AUTH_TOKEN")
-        }
-
-    }
-    maven {
         url = uri("https://packages.confluent.io/maven/")
     }
 }

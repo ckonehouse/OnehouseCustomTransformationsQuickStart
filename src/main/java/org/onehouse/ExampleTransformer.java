@@ -15,7 +15,8 @@ public class ExampleTransformer implements Transformer {
 
 
     public Dataset<Row> apply(JavaSparkContext javaSparkContext, SparkSession sparkSession, Dataset<Row> df, TypedProperties typedProperties) {
-
+        df = df.select("trip_distance", "fare_amount","VendorId").groupBy(df.col("VendorId")).agg(functions.min("fare_amount")); //sample aggregation that returns two columns based on the minimum id value
+        //You can add any transformation that you want here. The return value of this apply function is what is written to the destination table.
         return df;
     }
 }
