@@ -37,9 +37,6 @@ public class TestExampleTransformer{
     static void setUp() throws IOException {
         spark = SparkSession.builder().appName("test").master("local[*]").getOrCreate();
         jsc = new JavaSparkContext(spark.sparkContext());
-//        schema = AvroConversionUtils.convertAvroSchemaToStructType(new Schema.Parser().parse(
-//                readFromResource("AMRDEF.avsc")));
-        // create empty dataset from schema
         inputDF = spark.read().parquet("src/test/resources/sample_data.parquet");
     }
 
@@ -53,13 +50,13 @@ public class TestExampleTransformer{
                 StandardCharsets.UTF_8
         );
     }
-
-    @Test
-    public void testQuickStart(){
-        ExampleTransformer transformer = new ExampleTransformer();
-        TypedProperties properties = new TypedProperties();
-        Dataset<Row> output = transformer.apply(jsc,spark,inputDF,properties);
-    }
+    //BELOW IS AN EXAMPLE TEST OF THE TRANSFORMER, UNCOMMENT TO EXECUTE THE TEST
+    // @Test
+    // public void testQuickStart(){
+    //     ExampleTransformer transformer = new ExampleTransformer();
+    //     TypedProperties properties = new TypedProperties();
+    //     Dataset<Row> output = transformer.apply(jsc,spark,inputDF,properties);
+    // }
 
 
 }
